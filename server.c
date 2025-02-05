@@ -1,5 +1,6 @@
 #include <signal.h>
 #include <unistd.h>
+#include "libft.h"
 
 void	handler(int sig, siginfo_t *info, void *content)
 {
@@ -22,10 +23,10 @@ void	handler(int sig, siginfo_t *info, void *content)
 }
 int	main(void)
 {
-	struct sigaction sa;
+	struct s_sigaction;
 
-	sa.sa_handler = handler;
-	ft_printf("Server PID:%d", getpid());
+	s_sigaction.sa_sigaction = handler;
+	ft_printf("Server PID: %u\n", getpid());
 	while (2137)
 	{
 		pause ();

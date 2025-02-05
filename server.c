@@ -12,9 +12,11 @@ void	handler(int sig, siginfo_t *info, void *content)
 	if (!pid)
 		pid = info->si_pid;
 	chr |= (sig == SIGUSR2);
-	if (i++ == 8)
+	if (i++ == 7)
 	{
 		i = 0;
+		if (!chr)
+			return ;
 		ft_putchar_fd(chr, 1);
 		chr = 0;
 	}
@@ -23,13 +25,12 @@ void	handler(int sig, siginfo_t *info, void *content)
 }
 int	main(void)
 {
-	struct sigaction	sa;
-
-	sa.sa_sigaction = handler;
-	sa.
-	sa(SIGUSR1, 0);
-	sa(SIGUSR2, 0);
+	struct	sigaction sa;
 	ft_printf("Server PID: %u\n", getpid());
+	sa.sa_sigaction = handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, 0);
+	sigaction(SIGUSR2, &sa, 0);
 	while (2137)
 	{
 		pause ();

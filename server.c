@@ -23,9 +23,12 @@ void	handler(int sig, siginfo_t *info, void *content)
 }
 int	main(void)
 {
-	struct s_sigaction;
+	struct sigaction	sa;
 
-	s_sigaction.sa_sigaction = handler;
+	sa.sa_sigaction = handler;
+	sa.
+	sa(SIGUSR1, 0);
+	sa(SIGUSR2, 0);
 	ft_printf("Server PID: %u\n", getpid());
 	while (2137)
 	{

@@ -16,7 +16,11 @@ void	handler(int sig, siginfo_t *info, void *content)
 	{
 		i = 0;
 		if (!chr)
+		{
+			kill(pid, SIGUSR2);
+			pid = 0;
 			return ;
+		}
 		ft_putchar_fd(chr, 1);
 		chr = 0;
 	}

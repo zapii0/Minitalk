@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzapora <mzapora@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/06 13:11:48 by mzapora           #+#    #+#             */
+/*   Updated: 2025/02/06 13:15:38 by mzapora          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <signal.h>
 #include "libft.h"
@@ -10,10 +22,11 @@ void	received(int sig, siginfo_t *info, void *content)
 		ft_printf("%s\n", "Server received message");
 	return ;
 }
+
 void	send_message(int pid, char c)
 {
 	int	bit;
-	
+
 	bit = 8;
 	while (bit--)
 	{
@@ -24,18 +37,13 @@ void	send_message(int pid, char c)
 		usleep(500);
 	}
 	bit = 8;
-/*	while (bit--)
-	{
-		kill(pid, SIGUSR1);
-		usleep(500);
-	}*/
 }
 
 int	main(int ac, char **av)
 {
-	int	pid;
-	char	c;
-	struct sigaction sc;
+	int					pid;
+	char				c;
+	struct sigaction	sc;
 
 	sc.sa_sigaction = received;
 	sigaction(SIGUSR2, &sc, 0);

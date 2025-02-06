@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzapora <mzapora@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/06 13:12:01 by mzapora           #+#    #+#             */
+/*   Updated: 2025/02/06 13:16:26 by mzapora          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <signal.h>
 #include <unistd.h>
 #include "libft.h"
 
 void	handler(int sig, siginfo_t *info, void *content)
 {
-	static int	pid = 0;
-	static int	i = 0;
+	static int				pid = 0;
+	static int				i = 0;
 	static char unsigned	chr = 0;
 
 	(void)content;
@@ -27,9 +39,11 @@ void	handler(int sig, siginfo_t *info, void *content)
 	else
 		chr <<= 1;
 }
+
 int	main(void)
 {
-	struct	sigaction sa;
+	struct sigaction	sa;
+
 	ft_printf("Server PID: %u\n", getpid());
 	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_SIGINFO;

@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-LIBFT_DIR = /nfs/homes/mzapora/Desktop/Minitalk/libtf
+LIBFT_DIR = libtf
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_INC = -I $(LIBFT_DIR)
 LIBFT_LNK = -L $(LIBFT_DIR) -lft
